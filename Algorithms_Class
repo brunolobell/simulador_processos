@@ -1,0 +1,20 @@
+public class Algorithms{
+	public static Process InExecution; //Passar o processo em execução
+	
+	//SJF passar a lista de processos e, após ordenar em função do tempo de execução, retorna a lista de processos
+	public static List <Process> sjf(List <Process> processes){
+		processes.RemoveAt(0);		
+		processes.Sort((a,b) => {
+			return a.GetExecution().CompareTo(b.GetExecution());
+		});
+		processes.Insert(0,InExecution);
+		return processes;
+	}
+
+	//RR passar a lista de processos, retornando a mesma
+	public static List <Process> RR(List <Process> processes){
+		processes.Add(processes[0]);
+		processes.RemoveAt(0);
+		return processes;
+	}
+}
